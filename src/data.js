@@ -18,7 +18,7 @@ const sublinks = [
       { label: 'billing', icon: <FaBook />, url: '/products' },
     ],
   },
-  {
+  { 
     page: 'company',
     links: [
       { label: 'about', icon: <FaBriefcase />, url: '/products' },
