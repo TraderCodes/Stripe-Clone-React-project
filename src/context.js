@@ -24,13 +24,12 @@ export const AppProvider = ({ children }) => {
    };
 
    return (
-      <AppContext.Provider
-         values={{
+      <AppContext.Provider 
+         value={{
             isSubmenuOpen,
             isSidebarOpen,
             openSidebar,
             closeSidebar,
-        
             openSubmenu,
             closeSubmenu,
          }}
