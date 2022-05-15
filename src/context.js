@@ -5,9 +5,9 @@ const AppContext = React.createContext();
 
 export const AppProvider = ({ children }) => {
    // set sidebar and modal toggle options
-   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-   const [isSubmenuOpen, setIsSubmenuOpen] = useState(true);
-
+   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
+   const [location, setLocation] = useState({});
    //     set sidebar toggle
    const openSidebar = () => {
       setIsSidebarOpen(true);
@@ -16,7 +16,9 @@ export const AppProvider = ({ children }) => {
       setIsSidebarOpen(false);
    };
    //    set modal toggle
-   const openSubmenu = () => {
+   const openSubmenu = (coordinates, text) => {
+      //when coordinates is being pass into opensubmenu ass a arguments, set it as location by using setLocation
+      setLocation(coordinates);
       setIsSubmenuOpen(true);
    };
    const closeSubmenu = () => {
@@ -24,7 +26,7 @@ export const AppProvider = ({ children }) => {
    };
 
    return (
-      <AppContext.Provider 
+      <AppContext.Provider
          value={{
             isSubmenuOpen,
             isSidebarOpen,
@@ -32,6 +34,7 @@ export const AppProvider = ({ children }) => {
             closeSidebar,
             openSubmenu,
             closeSubmenu,
+            location,
          }}
       >
          {children}

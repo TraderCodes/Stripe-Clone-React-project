@@ -4,18 +4,30 @@ import { FaBars } from 'react-icons/fa';
 import { useGlobalContext } from './context';
 
 const Navbar = () => {
-   //
    const { openSidebar, openSubmenu, closeSubmenu } = useGlobalContext();
    //  Setup display submenu when hover overmenu
    //  setup Event target when hover
    const displaySubmenu = (e) => {
-     console.log('helloWorld');
-        openSubmenu();
-      // connects to submenu.js
+      //  e.target shows the parent element when hover
+      const page = e.target.textContent;
+      // get location
+      const tempBtn = e.target.getBoundingClientRect();
+      // find center by adding left and right / 2
+      const center = (tempBtn.left + tempBtn.right) / 2;
+      const bottom = tempBtn.bottom - 3;
+      openSubmenu(page, { center, bottom });
+   };
+   const handleSubmenu = (e) => {
+      if (!e.target.classList.contains('link-btn')) {
+         closeSubmenu();
+      }
    };
 
+   // pass in context
+   // connects to submenu.js
+
    return (
-      <nav className="nav">
+      <nav className="nav" onMouseOver={handleSubmenu}>
          <div className="nav-center">
             {/* header for main content */}
             <div className="nav-header">
