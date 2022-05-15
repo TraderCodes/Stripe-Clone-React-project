@@ -39,7 +39,7 @@ export const AppProvider = ({ children }) => {
             closeSubmenu,
             location,
             page,
-         }}
+         } }
       >
          {children}
       </AppContext.Provider>
